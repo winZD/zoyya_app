@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import locations from "../database/locations.json";
 import styled from "styled-components";
-import { Route, useParams, useRouteMatch } from "react-router-dom";
-import { useHistory } from "react-router";
+import { useParams } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 
 const LocationDetail = () => {

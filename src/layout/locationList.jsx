@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const LocationList = () => {
-  const [selectedLocation, setSelectedLocation] = useState(null);
+  
   const link = "https://www.zoyya.com/";
   console.log(locations);
   return (
@@ -62,9 +62,6 @@ const LocationList = () => {
             </Link>
           </Card>
         ))}
-        {!!selectedLocation && (
-          <div onClick={() => setSelectedLocation(null)}>{"<- BACK"}</div>
-        )}
       </Container>
     </div>
   );
