@@ -21,6 +21,21 @@ const LocationDetail = () => {
           <HeaderChildLeft>{"ZOYYA LOGO"}</HeaderChildLeft>
         </Link>{" "}
         <HeaderChildRight>
+          <HeaderChildRightChild>
+            <div style={{ display: "flex" }}>
+              <img
+                src="avatar.png"
+                alt=" Ivana Zuber"
+                class="avatar"
+                style={{
+                  fontSize: 10,
+                  fontWeight: "normal",
+                  verticalAlign: "middle",
+                  borderRadius: "50%",
+                }}
+              ></img>
+            </div>
+          </HeaderChildRightChild>
           <a href={link} target={"_blank"}>
             <HeaderChildRightChild>{"My appointments"}</HeaderChildRightChild>
           </a>
@@ -48,11 +63,8 @@ const LocationDetail = () => {
           <CardRightChild>
             <img
               style={{
-                maxWidth: "100%",
-                maxHeight: "100%",
-                borderRadius: 4,
-                objectFit: "contain",
-                marginLeft: 30,
+                height: "282px",
+                borderRadius: 10,
               }}
               src={locationDetail.imageUrl}
             ></img>
@@ -85,7 +97,7 @@ const LocationDetail = () => {
           <CardRightChild2>
             {shifts.map((shift) => (
               <div>
-                  <h2>{"Working hours"}</h2>
+                <h2>{"Working hours"}</h2>
                 <div style={{ display: "flex" }}>
                   <div style={{ width: "50%" }}>
                     <p>{shift.openHours[0].dayName}</p>
@@ -103,27 +115,27 @@ const LocationDetail = () => {
                     </p>
                     <p>
                       {shift.openHours[1].startTime}
-                      {` - ${shift.openHours[0].endTime}`}
+                      {` - ${shift.openHours[1].endTime}`}
                     </p>
                     <p>
                       {shift.openHours[2].startTime}
-                      {`- ${shift.openHours[0].endTime}`}
+                      {`- ${shift.openHours[2].endTime}`}
                     </p>
                     <p>
                       {shift.openHours[3].startTime}
-                      {`- ${shift.openHours[0].endTime}`}
+                      {`- ${shift.openHours[3].endTime}`}
                     </p>
                     <p>
                       {shift.openHours[4].startTime}
-                      {`- ${shift.openHours[0].endTime}`}
+                      {`- ${shift.openHours[4].endTime}`}
                     </p>
                     <p>
                       {shift.openHours[5].startTime}
-                      {`- ${shift.openHours[0].endTime}`}
+                      {`- ${shift.openHours[5].endTime}`}
                     </p>
                     <p>
                       {shift.openHours[6].startTime}
-                      {`- ${shift.openHours[0].endTime}`}
+                      {`- ${shift.openHours[6].endTime}`}
                     </p>
                   </div>
                 </div>
@@ -131,13 +143,14 @@ const LocationDetail = () => {
             ))}
           </CardRightChild2>
         </CardFlex>
+        <h2>{"Our team"}</h2>
         <CardFlex>
           <CardBottomChild>
-            {locationDetail.teamMembers.map((team) => (
+            {locationDetail.teamMembers.map((team, index) => (
               <div>
                 {" "}
                 <div style={{ margin: 50 }}>
-                  <span>&#128512;</span>
+                  <span>&#128512;{`Slika_${index}`}</span>
                 </div>
                 <div>
                   <span>{team.nickName}</span>
@@ -224,6 +237,7 @@ const CardFlex = styled.div`
   justify-content: center;
   alignt-items: center;
   text-align: center;
+  height: 33%;
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
@@ -233,10 +247,12 @@ const CardFlex = styled.div`
 const CardLeftChild = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30%;
-  border: 2px solid #e7e7e7;
+  width: 75%;
+  background-color: rgb(241, 241, 241);
+  height: fit-content;
   border-radius: 4px;
   text-align: left;
+  margin-right: 10px;
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -245,10 +261,10 @@ const CardLeftChild2 = styled.div`
   display: flex;
   flex-direction: column;
   width: 70%;
-  border: 2px solid #e7e7e7;
+
   border-radius: 4px;
   text-align: left;
-  margin-left: 30px;
+
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -257,10 +273,11 @@ const CardLeftChild2 = styled.div`
 const CardRightChild = styled.div`
   display: flex;
   flex-direction: column;
-  width: 70%;
-  border: 2px solid #e7e7e7;
+  width: auto;
+
   align-items: center;
   border-radius: 4px;
+
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -269,8 +286,7 @@ const CardRightChild = styled.div`
 const CardRightChild2 = styled.div`
   display: flex;
   flex-direction: column;
-  width: 70%;
-  border: 2px solid #e7e7e7;
+  width: 50%;
 
   border-radius: 4px;
   @media (max-width: 768px) {
@@ -281,10 +297,9 @@ const CardRightChild2 = styled.div`
 const CardBottomChild = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
   width: 100%;
-  border: 2px solid #e7e7e7;
 
   border-radius: 4px;
 `;
@@ -292,7 +307,7 @@ const Button = styled.button`
   background-color: purple;
   border: none;
   color: white;
-  height: 30px;
+  height: 45px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -300,7 +315,11 @@ const Button = styled.button`
   margin: 4px 2px;
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 10%;
+  margin-top: 6%;
   margin-left: 10px;
   margin-right: 10px;
+
+  :hover {
+    background-color: #350080;
+  }
 `;

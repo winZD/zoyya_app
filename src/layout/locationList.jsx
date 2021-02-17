@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import locations from "../database/locations.json";
 import styled from "styled-components";
-import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
 const LocationList = () => {
@@ -15,24 +14,45 @@ const LocationList = () => {
           <HeaderChildLeft>{"ZOYYA LOGO"}</HeaderChildLeft>
         </Link>{" "}
         <HeaderChildRight>
-          <a href={link}>
+          <HeaderChildRightChild>
+            <div style={{ display: "flex" }}>
+              <img
+                src="avatar.png"
+                alt=" Ivana Zuber"
+                class="avatar"
+                style={{
+                  fontSize: 10,
+                  fontWeight: "normal",
+                  verticalAlign: "middle",
+                  borderRadius: "50%",
+                }}
+              ></img>
+            </div>
+          </HeaderChildRightChild>
+          <a href={link} target={"_blank"}>
             <HeaderChildRightChild>{"My appointments"}</HeaderChildRightChild>
           </a>
-          <a href={link}>
+          <a href={link} target={"_blank"}>
             <HeaderChildRightChild>{"My places"}</HeaderChildRightChild>
           </a>{" "}
-          <a href={link}>
+          <a href={link} target={"_blank"}>
             <HeaderChildRightChild>
               {"Back to business app"}
             </HeaderChildRightChild>
           </a>
         </HeaderChildRight>
       </Header>
+      <h3 style={{ marginLeft: "10px" }}>{"Featured partners"}</h3>
       <Container>
         {locations.map((location, index) => (
           <Card>
             <img
-              style={{ maxWidth: "100%", maxHeight: "100%" }}
+              key={index}
+              style={{
+                maxWidth: "100%",
+                maxHeight: "100%",
+                borderRadius: "10px",
+              }}
               src={location.imageUrl}
             ></img>
             <div>{location.name}</div>
@@ -114,8 +134,8 @@ const HeaderChildRightChild = styled.div`
 
 const Card = styled.div`
   border: 2px solid #e7e7e7;
-
-  border-radius: 4px;
+ 
+  border-radius:10px;
 
   padding: 0.5rem;
   :hover {
