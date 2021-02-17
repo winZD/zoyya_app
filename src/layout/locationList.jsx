@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import locations from "../database/locations.json";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+import { useHistory } from "react-router";
 const LocationList = () => {
-  
+  const { push } = useHistory();
   const link = "https://www.zoyya.com/";
   console.log(locations);
   return (
@@ -45,7 +45,7 @@ const LocationList = () => {
       <h3 style={{ marginLeft: "10px" }}>{"Featured partners"}</h3>
       <Container>
         {locations.map((location, index) => (
-          <Card>
+          <Card onClick={() => push("/location_detail/" + index)}>
             <img
               key={index}
               style={{
